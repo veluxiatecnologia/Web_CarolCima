@@ -228,7 +228,7 @@ button {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 80vh;
+    height: 100vh;
     min-height: 500px;
     display: flex;
     align-items: center;
@@ -236,8 +236,8 @@ button {
     text-align: center;
     overflow: hidden;
     background: linear-gradient(135deg, #F8F7F9 0%, #EFEBF1 100%);
-    margin-top: 120px;
-    /* padding-top removed for better centering */
+    margin-top: 0;
+    padding-top: 160px;
 }
 
 .hero-bg-logo {
