@@ -272,7 +272,7 @@ button {
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: var(--font-size-h1);
     color: var(--color-grafite);
     margin-bottom: 1.5rem;
     font-weight: 500;
