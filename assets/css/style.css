@@ -278,10 +278,7 @@ button {
     font-weight: 500;
     opacity: 0;
     animation: fadeInUp 1s ease-out 0.3s forwards;
-    line-height: 1.1;
-    max-width: 18ch;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.2;
 }
 
 .hero .subtitle {
