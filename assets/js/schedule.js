@@ -313,9 +313,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
         // Open in new tab after a short delay
+        // Open in new tab after a delay to allow confetti animation
         setTimeout(() => {
             window.open(whatsappLink, '_blank', 'noopener,noreferrer');
-        }, 1500);
+        }, 3500);
     }
 
     btnBack3.addEventListener('click', () => goToStep(2));

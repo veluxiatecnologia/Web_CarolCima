@@ -1,0 +1,145 @@
+/**
+ * UX Enhancements CSS - Phase 3 (Polish)
+ * Confetti, Scroll Top, Testimonials
+ */
+
+/* ============================================
+   SCROLL TO TOP BUTTON
+   ============================================ */
+
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    /* Left side to avoid conflict with WhatsApp */
+    width: 45px;
+    height: 45px;
+    background: var(--color-violeta);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 990;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.scroll-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+    background: var(--color-lavanda);
+    color: var(--color-violeta);
+    transform: translateY(-5px);
+}
+
+/* ============================================
+   CONFETTI ANIMATION
+   ============================================ */
+
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.confetti {
+    position: absolute;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ============================================
+   ENHANCED TESTIMONIALS
+   ============================================ */
+
+.enhanced-review {
+    position: relative;
+    overflow: hidden;
+}
+
+.enhanced-review::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    font-size: 5rem;
+    color: rgba(164, 138, 184, 0.1);
+    font-family: serif;
+    line-height: 1;
+}
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    color: var(--color-verde);
+    background: rgba(138, 184, 150, 0.1);
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 8px;
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+/* ============================================
+   DARK MODE ADJUSTMENTS
+   ============================================ */
+
+body.dark-mode .scroll-top-btn {
+    background: #2d3561;
+    color: #eee;
+}
+
+body.dark-mode .scroll-top-btn:hover {
+    background: var(--color-violeta);
+}
+
+body.dark-mode .enhanced-review::before {
+    color: rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .confetti {
+        animation: none !important;
+        display: none;
+    }
+
+    .scroll-top-btn {
+        transition: opacity 0.3s ease;
+        transform: none !important;
+    }
+}
