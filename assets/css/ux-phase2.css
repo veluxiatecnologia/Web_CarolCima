@@ -1,0 +1,441 @@
+/**
+ * UX Enhancements CSS - Phase 2
+ * Autofill, Dark Mode, Quick Preview, Recommendations
+ */
+
+/* ============================================
+   AUTOFILL PROMPT
+   ============================================ */
+
+.autofill-prompt {
+    background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+    border: 2px solid var(--color-violeta);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    animation: slideDown 0.4s ease-out;
+}
+
+.autofill-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.autofill-content>i {
+    font-size: 2.5rem;
+    color: var(--color-violeta);
+}
+
+.autofill-text {
+    flex: 1;
+    min-width: 200px;
+}
+
+.autofill-text strong {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--color-grafite);
+    margin-bottom: 0.25rem;
+}
+
+.autofill-text p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.autofill-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-autofill-yes,
+.btn-autofill-no {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.btn-autofill-yes {
+    background: var(--color-verde);
+    color: white;
+}
+
+.btn-autofill-yes:hover {
+    background: #75a382;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(138, 184, 150, 0.4);
+}
+
+.btn-autofill-no {
+    background: transparent;
+    color: var(--color-grafite);
+    border: 2px solid #ddd;
+}
+
+.btn-autofill-no:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+/* ============================================
+   QUICK SLOTS PREVIEW
+   ============================================ */
+
+.quick-slots-preview {
+    background: white;
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    margin-top: 2rem;
+}
+
+.quick-slots-preview h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    color: var(--color-grafite);
+}
+
+.quick-slots-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.quick-slot {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--color-lavanda) 0%, #fff 100%);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.quick-slot:hover {
+    border-color: var(--color-violeta);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(164, 138, 184, 0.2);
+}
+
+.quick-slot i {
+    font-size: 1.5rem;
+    color: var(--color-violeta);
+}
+
+.quick-slot div {
+    flex: 1;
+}
+
+.quick-slot strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--color-grafite);
+    margin-bottom: 0.25rem;
+}
+
+.quick-slot span {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* ============================================
+   RECOMMENDED SLOTS BADGES
+   ============================================ */
+
+.time-slot {
+    position: relative;
+}
+
+.time-slot .slot-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--color-verde);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    white-space: nowrap;
+    animation: badgePop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes badgePop {
+    0% {
+        transform: scale(0) rotate(-12deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+    }
+}
+
+.time-slot .slot-badge.popular {
+    background: #e74c3c;
+}
+
+.time-slot .slot-badge.quiet {
+    background: var(--color-violeta);
+}
+
+.time-slot .slot-badge.last {
+    background: #f39c12;
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark-mode-toggle {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-violeta) 0%, var(--color-lavanda) 100%);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+    .dark-mode-toggle {
+        top: auto;
+        bottom: 90px;
+        right: 90px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background: #1a1a2e;
+    color: #eee;
+}
+
+body.dark-mode .header {
+    background: #16213e;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .nav-link {
+    color: #eee;
+}
+
+body.dark-mode .nav-link:hover {
+    color: var(--color-lavanda);
+}
+
+body.dark-mode .footer {
+    background: #16213e;
+}
+
+body.dark-mode .service-card,
+body.dark-mode .service-option,
+body.dark-mode .quick-slots-preview,
+body.dark-mode .autofill-prompt,
+body.dark-mode .quick-slot {
+    background: #16213e;
+    color: #eee;
+    border-color: #2d3561;
+}
+
+body.dark-mode .service-card:hover,
+body.dark-mode .service-option:hover {
+    background: #1f2a4a;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background: #16213e;
+    color: #eee;
+    border-color: #2d3561;
+}
+
+body.dark-mode .calendar-day {
+    background: #16213e;
+    color: #eee;
+    border-color: #2d3561;
+}
+
+body.dark-mode .calendar-day:hover:not(.disabled) {
+    background: #1f2a4a;
+}
+
+body.dark-mode .calendar-day.selected {
+    background: var(--color-violeta);
+    color: white;
+}
+
+body.dark-mode .time-slot {
+    background: #16213e;
+    color: #eee;
+    border-color: #2d3561;
+}
+
+body.dark-mode .time-slot.selected {
+    background: var(--color-verde);
+    color: white;
+}
+
+body.dark-mode .toast {
+    background: #16213e;
+    border: 1px solid #2d3561;
+}
+
+body.dark-mode .toast span {
+    color: #eee;
+}
+
+body.dark-mode .booking-summary-sticky {
+    background: linear-gradient(135deg, #1f2a4a 0%, #16213e 100%);
+}
+
+body.dark-mode .summary-card .icon {
+    background: #1f2a4a;
+}
+
+body.dark-mode .cookie-banner {
+    background: linear-gradient(135deg, #16213e 0%, #0f1419 100%);
+}
+
+/* ============================================
+   TIME-BASED GREETING
+   ============================================ */
+
+.time-greeting {
+    display: inline-block;
+    font-size: 0.6em;
+    color: var(--color-violeta);
+    font-weight: 500;
+    opacity: 0;
+    animation: greetingFadeIn 1s ease-out 0.5s forwards;
+}
+
+@keyframes greetingFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body.dark-mode .time-greeting {
+    color: var(--color-lavanda);
+}
+
+/* ============================================
+   ENHANCED CALENDAR HINTS
+   ============================================ */
+
+.calendar-wrapper {
+    position: relative;
+}
+
+.calendar-legend {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.legend-dot.available {
+    background: var(--color-verde);
+}
+
+.legend-dot.unavailable {
+    background: #ccc;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+    .autofill-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .autofill-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .btn-autofill-yes,
+    .btn-autofill-no {
+        width: 100%;
+    }
+
+    .quick-slots-preview {
+        margin-top: 1rem;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+.autofill-prompt:focus-within,
+.quick-slot:focus-within {
+    outline: 2px solid var(--color-violeta);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .autofill-prompt,
+    .quick-slot,
+    .time-greeting,
+    .slot-badge {
+        animation: none !important;
+    }
+
+    .quick-slot:hover,
+    .dark-mode-toggle:hover {
+        transform: none;
+    }
+}
