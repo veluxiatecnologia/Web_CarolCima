@@ -185,9 +185,24 @@ document.addEventListener('DOMContentLoaded', () => {
         phoneInput.addEventListener('input', (e) => {
             let value = e.target.value.replace(/\D/g, '');
 
-            if (value.length <= 11) {
-                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-                value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+            // Limit to 11 digits (DDD + 9 digits)
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+
+            // Apply mask
+            if (value.length > 10) {
+                // (11) 91234-5678
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            } else if (value.length > 6) {
+                // (11) 1234-5678
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                // (11) 1234...
+                value = value.replace(/^(\d{2})(\d{0,5}).*/, '($1) $2');
+            } else if (value.length > 0) {
+                // (11...
+                value = value.replace(/^(\d*)/, '($1');
             }
 
             e.target.value = value;
